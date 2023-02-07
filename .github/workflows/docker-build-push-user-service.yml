@@ -15,17 +15,15 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: '1.8'
-    
-    - name: Build shared Library with maven
-      run: mvn clean install --file server/shared/pom.xml -DskipTests
   
+
     - name: Build with maven
-      run: mvn -B package verify --file server/services/user-service/pom.xml -DskipTests
-      working-directory: server/services/user-service
+      run: mvn -B package verify --file pom.xml -DskipTests
     
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
+        path: server/services/user-service
         image: tahanebti/bitsoftnops-user-service
         tags: latest
         registry: docker.io
