@@ -1,11 +1,16 @@
 #Maven Build
 FROM maven:3.8.3-openjdk-8-slim AS builder
-COPY pom.xml /app/
-COPY src /app/src
-#RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests
+# Set image information, but could be set to different location from command line
+ARG IMAGE_VERSION="0.0.1-SNAPSHOT"
+ARG IMAGE_NAME="user-service"
+ARG MAINTAINER="Taha Nebti <taha.nebti@gmail.com>"
 
-#Run
-FROM openjdk:8-jre-slim
-ADD ./target/user-service-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 9007
-ENTRYPOINT ["java", "-jar", "app.jar"]
+LABEL version=${IMAGE_VERSION} name=${IMAGE_NAME} maintainer=${MAINTAINER}
+
+ADD ./target/user-service.jar user-service.jar
+
+# Expose the service to port 8080
+EXPOSE 8080
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "/user-service.jar"]
