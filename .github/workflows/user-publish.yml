@@ -17,9 +17,10 @@ jobs:
       with:
         java-version: 8
     - name: Build with Maven
-    - run: mvn clean install -f server/shared/logger/pom.xml
-    - run: mvn clean install -f server/shared/core/pom.xml
-    - run: mvn clean install -f server/services/user-service/pom.xml
+      run: | 
+          mvn clean install -f server/shared/logger/pom.xml
+          run: mvn clean install -f server/shared/core/pom.xml
+          run: mvn clean install -f server/services/user-service/pom.xml
     - name: Build Docker Image
       uses: docker/build-push-action@v2
       with:
