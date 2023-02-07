@@ -16,11 +16,11 @@ jobs:
       with:
         java-version: '1.8'
     
-    - name: Build Core Library with maven
-      run: mvn -B package verify --file server/shared/core/pom.xml -DskipTests
-      
     - name: Build logger Library with maven
       run: mvn -B package verify --file server/shared/logger/pom.xml -DskipTests
+      
+    - name: Build Core Library with maven
+      run: mvn -B package verify --file server/shared/core/pom.xml -DskipTest
       
     - name: Build security Library with maven
       run: mvn -B package verify --file server/shared/security/pom.xml -DskipTests
