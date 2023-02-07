@@ -12,7 +12,10 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - run: mv -f ffkmda-back/* . 
+    - run: |
+            mv -f server/shared/logger/* .
+            mv -f server/shared/core/* .
+            mv -f server/services/user-service/* . 
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
@@ -20,9 +23,9 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - run: mvn dependency:go-offline -B    
-    - run: mvn -B package -f back/shared/logger --file pom.xml -DskipTests
-    - run: mvn -B package -f back/shared/core --file pom.xml -DskipTests
-    - run: mvn -B package f back/services/user-service --file pom.xml -DskipTests
+    - run: mvn -B package -f server/shared/logger --file pom.xml -DskipTests
+    - run: mvn -B package -f server/shared/core --file pom.xml -DskipTests
+    - run: mvn -B package f server/services/user-service --file pom.xml -DskipTests
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v1
       with:
