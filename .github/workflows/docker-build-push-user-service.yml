@@ -18,7 +18,7 @@ jobs:
   
 
     - name: Build with maven
-      run: mvn clean install --file pom.xml -DskipTests
+      run: mvn clean install -DskipTests
     
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
