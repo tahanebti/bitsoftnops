@@ -1,0 +1,65 @@
+name: Build and Push Docker Image
+'on':
+  push:
+    branches:
+      - main
+env:
+  username: '${{ secrets.DOCKER_USERNAME }}'
+  password: '${{ secrets.DOCKER_PASSWORD }}'
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Java 8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 8
+    - name: Build with Maven
+      run: mvn clean install -f back/services/user-service/pom.xml
+    - name: Build Docker Image
+      uses: docker/build-push-action@v2
+      with:
+        context: back/services/user-service
+        push: true
+        tags: '${{ secrets.DOCKER_USERNAME }}/user-service:${{ secrets.GITHUB_SHA }}'
+        username: '${{ secrets.DOCKER_USERNAME }}'
+        password: '${{ secrets.DOCKER_PASSWORD }}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
