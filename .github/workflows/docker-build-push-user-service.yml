@@ -16,8 +16,17 @@ jobs:
       with:
         java-version: '1.8'
     
+    - name: Build Core Library with maven
+      run: mvn -B package verify --file server/shared/core/pom.xml -DskipTests
+      
+    - name: Build logger Library with maven
+      run: mvn -B package verify --file server/shared/logger/pom.xml -DskipTests
+      
+    - name: Build security Library with maven
+      run: mvn -B package verify --file server/shared/security/pom.xml -DskipTests
+    
     - name: Build with maven
-      run: mvn -B package --file pom.xml -DskipTests
+      run: mvn -B package verify --file server/services/user-service/pom.xml -DskipTests
       working-directory: server/services/user-service
     
     - name: Build & push Docker image
