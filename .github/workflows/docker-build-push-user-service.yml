@@ -17,8 +17,8 @@ jobs:
         java-version: '1.8'
         distribution: 'adopt'
         cache: maven
-    - run: mvn clear install -f server/shared/logger/pom.xml -DskipTests
-    - run: mvn clear install -f server/shared/core/pom.xml -DskipTests
+    - run: mvn clean install -f server/shared/logger/pom.xml -DskipTests
+    - run: mvn clean install -f server/shared/core/pom.xml -DskipTests
     - run: mvn -B package -f server/services/user-service/pom.xml -DskipTests
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v1
