@@ -21,10 +21,10 @@ jobs:
           mvn clean install -f server/shared/logger/pom.xml
           run: mvn clean install -f server/shared/core/pom.xml
           run: mvn clean install -f server/services/user-service/pom.xml
-    - name: Build Docker Image
-      uses: docker/build-push-action@v2
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        context: server/services/user-service
+        image: tahanebti/bitsofops/user-service
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
