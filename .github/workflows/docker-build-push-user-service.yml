@@ -20,7 +20,7 @@ jobs:
     - name: Build Docker images
       if: docker-build.sh
       run: |
-          bash ./docker-build.sh
+          bash bitsoftnops/docker-build.sh
       shell: bash
       
     - name: Push Docker images to Docker registry 
