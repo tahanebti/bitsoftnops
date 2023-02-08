@@ -6,8 +6,14 @@ RUN apt-get update && \
     apt-get install -y maven
 
 
+# Set the working directory
+WORKDIR /app
+
+# Copy the source code and pom.xml to the working directory
+COPY . /app
+
 # Build the application using Maven
-RUN mvn clean install --file pom.xml -DskipTests
+RUN mvn clean install -f pom.xml -DskipTests
 
 COPY target/user-service-1.0.0.jar app.jar
 
