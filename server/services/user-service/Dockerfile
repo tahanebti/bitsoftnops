@@ -1,6 +1,10 @@
 #Run
 FROM openjdk:8-jre-slim
 
+# Install Apache Maven
+RUN apt-get update && \
+    apt-get install -y maven
+
 # Set the working directory
 WORKDIR /app
 
