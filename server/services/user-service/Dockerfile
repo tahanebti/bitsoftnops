@@ -7,10 +7,10 @@ ARG MAINTAINER="Taha Nebti <taha.nebti@gmail.com>"
 
 LABEL version=${IMAGE_VERSION} name=${IMAGE_NAME} maintainer=${MAINTAINER}
 
-ADD ./target/user-service.jar user-service.jar
+ADD ./target/user-service-1.0.0.jar app.jar
 
 # Expose the service to port 8080
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "/user-service.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
