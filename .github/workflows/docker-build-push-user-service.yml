@@ -25,6 +25,7 @@ jobs:
       run: |
            cd server
            chmod +x ./mvnw
+           ./mvnw clean install 
            ./mvnw clean compile jib:dockerBuild --projects services/user-service
 
       
