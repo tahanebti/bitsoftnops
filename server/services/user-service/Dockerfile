@@ -10,15 +10,16 @@ WORKDIR /app
 
 # Copy the source code and pom.xml to the working directory
 COPY . /app
-COPY pom.xml /app
+COPY pom.xml /app/
+COPY src /app/src
 
 # Build the application using Maven
 RUN mvn clean install
 
-COPY target/user-service-1.0.0.jar /app
+COPY target/user-service-1.0.0.jar app.jar
 
-ENV JAR_FILE=user-service-1.0.0.jar
+#ENV JAR_FILE=user-service-1.0.0.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "$JAR_FILE"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
