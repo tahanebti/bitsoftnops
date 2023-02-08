@@ -20,7 +20,7 @@ jobs:
     - name: Build Docker images
       if: docker-build.sh
       run: |
-          ./docker-build.sh
+          ../../docker-build.sh
     
     - name: Push Docker images to Docker registry
       if: docker-build.sh
