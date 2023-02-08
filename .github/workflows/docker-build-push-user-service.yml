@@ -24,6 +24,7 @@ jobs:
     - name: Build Docker images
       run: |
            cd server
+           chmod +x ./mvnw
            ./mvnw clean compile jib:dockerBuild --projects services/user-service
 
       
