@@ -5,11 +5,14 @@ FROM openjdk:8-jre-slim
 RUN apt-get update && \
     apt-get install -y maven
 
-COPY pom.xml /app/
-COPY src /app/src
-#RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests
 
+# Build the application using Maven
+RUN mvn clean install --file pom.xml -DskipTests
 
-ADD ./target/user-service-1.0.0.jar app.jar
-EXPOSE 9007
+COPY target/user-service-1.0.0.jar app.jar
+
+#ENV JAR_FILE=user-service-1.0.0.jar
+
+EXPOSE 8080
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
