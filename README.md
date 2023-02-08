@@ -1,9 +1,9 @@
-# BitOftnOps : DevOps-bel-tounsi-mentorship-and-enrollment-microsiervices
+# Bitsoftnops : mentorship and enrollment microsiervices
 the goal of this project is to implement "DevOps-bel-tounsi" a distributed system based on Event Driven architecture with kafka as a centralized distributed stream processing. 
 
 ## Project Architecture
 
-![Alt text](https://github.com/tahanebti/devOps-bel-tounsi-mentorship-and-enrollment-microsiervices/blob/main/screenshoots/architecture-design.png)
+![Alt text](https://github.com/tahanebti/devOps-bel-tounsi-mentorship-and-enrollment-microsiervices/blob/main/docs/architecture-design.png)
 
 ### kafka as distributed stream processing
 
