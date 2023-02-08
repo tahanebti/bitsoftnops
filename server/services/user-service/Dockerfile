@@ -3,7 +3,7 @@ FROM openjdk:8-jre-slim
 
 WORKDIR /app
 
-COPY target/user-service-1.0.0.jar /app.jar
+COPY target/user-service-1.0.0.jar /app
 
 ENV JAR_FILE=user-service-1.0.0.jar
 
