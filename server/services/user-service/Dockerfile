@@ -1,7 +1,14 @@
 #Run
 FROM openjdk:8-jre-slim
 
+# Set the working directory
 WORKDIR /app
+
+# Copy the source code to the working directory
+COPY . /app
+
+# Run Maven to build the application
+RUN mvn clean install
 
 COPY target/user-service-1.0.0.jar /app
 
