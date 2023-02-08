@@ -18,11 +18,11 @@ jobs:
   
 
     - name: Build Docker images
-      if: -f docker-build.sh
+      if: docker-build.sh
       run: ./docker-build.sh
     
     - name: Push Docker images to Docker registry
-      if: -f docker-build.sh
+      if: docker-build.sh
       uses: docker/login-action@v1
       with:
         registry: docker.io
@@ -31,7 +31,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
     - name: Publish Docker images
-      if: -f docker-build.sh
+      if: docker-build.sh
       run: |
         docker push tahanebti/bitsoftnops-user-service:latest
         
