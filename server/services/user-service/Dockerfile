@@ -10,8 +10,6 @@ WORKDIR /app
 
 # Copy the source code and pom.xml to the working directory
 COPY . /app
-COPY pom.xml /app/
-COPY src /app/src
 
 # Build the application using Maven
 RUN mvn clean install
