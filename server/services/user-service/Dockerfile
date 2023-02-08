@@ -8,10 +8,11 @@ RUN apt-get update && \
 # Set the working directory
 WORKDIR /app
 
-# Copy the source code to the working directory
+# Copy the source code and pom.xml to the working directory
 COPY . /app
+COPY pom.xml /app
 
-# Run Maven to build the application
+# Build the application using Maven
 RUN mvn clean install
 
 COPY target/user-service-1.0.0.jar /app
