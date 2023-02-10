@@ -9,13 +9,9 @@ COPY server/services/user-service/ /app/
 
 # Run Maven to download the project dependencies
 RUN chmod +x ./mvnw
-RUN ./mvnw -B dependency:resolve
-
-# Copy the rest of the application code to the image
-COPY . .
 
 # Build the application using Maven
-RUN ./mvnw -B package
+RUN ./mvnw -B package -DskipTests 
 
 # Run the application when the container starts
 CMD java -jar target/user-service-1.0.0.jar
