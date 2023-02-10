@@ -1,11 +1,11 @@
 #Run
 FROM openjdk:8-jre-slim
 
-COPY pom.xml /app/
+WORKDIR /app
 COPY src /app/src
+COPY pom.xml /app
+RUN ./mvnw -P docker-build -DskipTests=true -f /app/pom.xml clean package install
 
-RUN ./mvnw clean install -DskipTests
-
-ADD ./target/user-service-1.0.0.jar app.jar
+ADD ./target/user-service-1.0.0.jar /app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
