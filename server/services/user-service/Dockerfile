@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . /app
 
 # Build the application using Maven
-RUN ./mvnw clean install -f pom.xml -DskipTests 
+#RUN ./mvnw clean install -f pom.xml -DskipTests 
 
 COPY target/user-service-1.0.0.jar /app
 
