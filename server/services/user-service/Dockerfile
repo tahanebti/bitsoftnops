@@ -11,7 +11,7 @@ COPY server/services/user-service/ /app/
 RUN chmod +x ./mvnw
 
 # Build the application using Maven
-RUN ./mvnw -B package -DskipTests 
+RUN ./mvnw clean install -DskipTests 
 
 # Run the application when the container starts
 CMD java -jar target/user-service-1.0.0.jar
