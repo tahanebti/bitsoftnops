@@ -8,6 +8,7 @@ WORKDIR /app
 COPY server/services/user-service/pom.xml .
 
 # Run Maven to download the project dependencies
+RUN chmod +x ./mvnw
 RUN ./mvnw -B dependency:resolve
 
 # Copy the rest of the application code to the image
