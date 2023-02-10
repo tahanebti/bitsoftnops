@@ -193,6 +193,8 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
+
            
          <plugin>
               <groupId>com.google.cloud.tools</groupId>
@@ -210,6 +212,17 @@
         </plugins>
     </build>
   
-  
+           <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-wrapper</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wrapper</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
     
 </project>
