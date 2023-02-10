@@ -20,7 +20,6 @@ jobs:
         cache: maven
     
     - run: chmod +x ./mvnw
-    - run: ./mvnw dependency:go-offline -B    
     - run: ./mvnw clean install --file pom.xml -DskipTests
     
     - name: Build & push Docker image
