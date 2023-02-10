@@ -1,20 +1,12 @@
 #Run
 FROM openjdk:8-jre-slim
 
+COPY pom.xml /app/
+COPY src /app/src
+#RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests
 
-# Set the working directory
-WORKDIR /app
+#Run
 
-# Copy the source code and pom.xml to the working directory
-COPY . /app
-
-# Build the application using Maven
-#RUN ./mvnw clean install -f pom.xml -DskipTests 
-
-COPY target/user-service-1.0.0.jar /app
-
-ENV JAR_FILE=user-service-1.0.0.jar
-
+ADD ./target/user-service-1.0.0.jar app.jar
 EXPOSE 8080
-
-ENTRYPOINT ["java", "-jar", "$JAR_FILE"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
