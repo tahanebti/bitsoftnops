@@ -18,7 +18,10 @@ jobs:
   
 
     - name: Build with maven
-      run: ./mvnw -B package --file server/pom.xml -DskipTests
+      run: |
+           cd server
+           chmod +x ./mvnw
+           ./mvnw clean install -DskipTests
     
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
