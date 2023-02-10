@@ -5,7 +5,7 @@ FROM openjdk:8-jre-slim
 WORKDIR /app
 
 # Copy the pom.xml file to the image
-COPY server/services/user-service/* .
+COPY server/services/user-service/ /app/
 
 # Run Maven to download the project dependencies
 RUN chmod +x ./mvnw
