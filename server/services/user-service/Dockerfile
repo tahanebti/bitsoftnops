@@ -1,17 +1,16 @@
 
 FROM openjdk:8-jre-slim
 
-# Set the working directory in the image to /app
 WORKDIR /app
 
-# Copy the pom.xml file to the image
-COPY server/services/user-service/ /app/
+# Copy the jar file of the application to the container
+COPY target/*.jar app.jar
 
-# Run Maven to download the project dependencies
-RUN chmod +x ./mvnw
+# Set the environment variable for the application's main class
+ENV JAVA_OPTS=""
 
-# Build the application using Maven
-RUN ./mvnw clean install -DskipTests 
+# Expose the default port used by the application
+EXPOSE 8080
 
-# Run the application when the container starts
-CMD java -jar target/user-service-1.0.0.jar
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
