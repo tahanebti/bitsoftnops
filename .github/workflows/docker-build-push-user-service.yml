@@ -22,8 +22,10 @@ jobs:
     - run: mvn clean install --file pom.xml -DskipTests
     
     - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
+      uses: docker/build-push-action@v2
       with:
+        context: server/services/user-service 
+        push: true
         image: tahanebti/bitsoftnops-user-service
         tags: latest
         registry: docker.io
