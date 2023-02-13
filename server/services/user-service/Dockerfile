@@ -1,13 +1,11 @@
+#Maven Build
+FROM maven:3.8.3-openjdk-8-slim AS builder
+COPY pom.xml /app/
+COPY src /app/src
+#RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests
 
-FROM openjdk:8-jdk-alpine AS build
-RUN mkdir -p /workspace
-WORKDIR /workspace
-COPY pom.xml /workspace
-COPY src /workspace/src
-#RUN ./mvnw -B package --file pom.xml -DskipTests
-
+#Run
 FROM openjdk:8-jre-slim
-#COPY target/user-service-1.0.0.jar /app/user-service-1.0.0.jar
-COPY --from=build /workspace/target/user-service-1.0.0.jar app.jar
-EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+ADD ./target/user-serivce-1.0.0.jar app.jar
+EXPOSE 9007
+ENTRYPOINT ["java", "-jar", "app.jar"]
