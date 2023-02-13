@@ -52,7 +52,10 @@ jobs:
     needs: [build_and_test]
 
     steps:
- 
+       - name: Run ls command to verify current working directory
+         run: | 
+            pwd
+            ll
        - name: Build & push Docker image
          uses: mr-smithers-excellent/docker-build-push@v5
          with:
