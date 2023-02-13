@@ -53,7 +53,7 @@ jobs:
 
     steps:
        - name: Build & push Docker image
-         uses: mr-smithers-excellent/docker-build-push@v5
+         uses: docker/build-push-action@v1
          with:
           working-directory: server/services/user-service/
           image: tahanebti/bitsoftnops-user-service
