@@ -56,6 +56,6 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Container image
-        run: docker build -t tahanebti/bitoftnops-user-service:latest .
+        run: docker build -t tahanebti/bitsoftnops-user-service:latest .
       - name: Publish Docker image
-        run: docker push tahanebti/bitoftnops-user-service
+        run: docker push tahanebti/bitsoftnops-user-service
