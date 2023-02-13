@@ -53,9 +53,9 @@ jobs:
 
     steps:
        - name: Set working directory
-         run: |
-            cd services/user-service
-            ls 
+         run: cd services/user-service
+       - name: Run ls command to verify current working directory
+         run: ls 
      
        - name: Build & push Docker image
          uses: mr-smithers-excellent/docker-build-push@v5
@@ -63,6 +63,6 @@ jobs:
           image: tahanebti/bitsoftnops-user-service
           tags: latest
           registry: docker.io
-          dockerfile: Dockerfile
+          dockerfile: services/user-service/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
