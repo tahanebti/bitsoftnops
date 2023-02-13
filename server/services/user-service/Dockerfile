@@ -1,7 +1,9 @@
 FROM openjdk:8-jdk-alpine
-# Environment Variable that defines the endpoint of sentiment-analysis python api: 
+
+WORKDIR /src
+
+COPY /target/*.jar /src/user-service-1.0.0.jar
+
 EXPOSE 8080
-ARG JAR_FILE=target/user-service-1.0.0.jar
-ADD ${JAR_FILE} app.jar
-#COPY ./debug-entrypoint.sh .
-ENTRYPOINT ["java","-jar","/app.jar"]
+
+CMD [ "java", "-jar", "/src/user-service-1.0.0.jar" ]
