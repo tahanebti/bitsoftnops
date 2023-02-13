@@ -56,11 +56,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build Docker Image
-      uses: mr-smithers-excellent/docker-build-push@v5
+      uses: docker/build-push-action@v2
       with:
+        context: server/services/user-service
+        push: true
         image: tahanebti/bitsoftnops-user-service
         tags: latest
         registry: docker.io
-        context: server/services/user-service
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
