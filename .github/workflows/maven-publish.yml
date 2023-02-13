@@ -54,7 +54,7 @@ jobs:
     steps:
        - name: Run ls command to verify current working directory
          run: | 
-            mv -f server/* .
+            mv -f services/* .
             ls 
      
        - name: Build & push Docker image
