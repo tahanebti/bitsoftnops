@@ -1,7 +1,10 @@
 # Use an official Maven image as the base image
 FROM maven:3.8.3-openjdk-8-slim 
 
-# Set the working directory to /app
+# Copy the project files into the container
+COPY . /app
+
+# Change the working directory to the project directory
 WORKDIR /app
 
 # Copy the pom.xml file to the container
