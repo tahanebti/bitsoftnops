@@ -54,7 +54,7 @@ jobs:
     steps:
        - name: Set working directory
          run: |
-            cd server/services/user-service
+            cd services/user-service
             ls 
      
        - name: Build & push Docker image
