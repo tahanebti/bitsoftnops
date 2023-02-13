@@ -1,5 +1,5 @@
 # Use an official Maven image as the base image
-FROM maven:1.8-jdk-8-alpine
+FROM maven:3.8.3-openjdk-8-slim 
 
 # Set the working directory to /app
 WORKDIR /app
