@@ -1,9 +1,9 @@
 FROM openjdk:8-jdk-alpine
 
-WORKDIR /src
+WORKDIR /app
 
-COPY /target/*.jar /src/user-service-1.0.0.jar
+COPY ./target/user-service-1.0.0.jar /app.jar
 
 EXPOSE 8080
 
-CMD [ "java", "-jar", "/src/user-service-1.0.0.jar" ]
+CMD [ "java", "-jar", "/app.jar" ]
