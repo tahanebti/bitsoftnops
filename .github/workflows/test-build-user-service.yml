@@ -28,7 +28,7 @@ jobs:
       - run: mvn clean install --file pom.xml -DskipTests
     
       - name: Build & push Docker image
-        uses: docker/build-push-action@v2
+      - uses: mr-smithers-excellent/docker-build-push@v5
         with:
           context: services/user-service 
           push: true
