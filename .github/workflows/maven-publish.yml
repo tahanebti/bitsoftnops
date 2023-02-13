@@ -54,7 +54,7 @@ jobs:
     steps:
        - name: Set working directory
          run: |
-            cd server/services/user-service
+            ls 
      
        - name: Build & push Docker image
          uses: mr-smithers-excellent/docker-build-push@v5
