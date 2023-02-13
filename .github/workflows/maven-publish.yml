@@ -1,15 +1,17 @@
 name: User-service Maven CI/CD
-'on':
+on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
+    
+    
 env:
   DOCKER_USERNAME: '${{ secrets.DOCKER_USERNAME }}'
   DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
   DOCKER_REPO: '${{ secrets.DOCKER_USERNAME }}/bitsoftnops-user-service'
+
+
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
