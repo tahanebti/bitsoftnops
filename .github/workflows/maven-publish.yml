@@ -67,6 +67,5 @@ jobs:
         push: true
         tags: docker.io/${{ env.DOCKER_USERNAME }}/bitsoftnops-user-service:latest
         registry: docker.io
-        env:
-          DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ env.DOCKER_PASSWORD }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
