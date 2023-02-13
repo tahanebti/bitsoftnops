@@ -60,7 +60,9 @@ jobs:
       with:
         context: server/services/user-service
         push: true
-        tags: docker.io/tahanebti/bitsoftnops-user-service:latest
+        image: tahanebti/bitsoftnops-user-service
+        tags: latest
+        registry: docker.io
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
