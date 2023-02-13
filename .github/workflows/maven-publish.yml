@@ -58,7 +58,7 @@ jobs:
     - name: Build Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: ./services/user-service
+        context: server/services/user-service
         push: true
         tags: docker.io/tahanebti/bitsoftnops-user-service:latest
       env:
