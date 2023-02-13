@@ -53,7 +53,7 @@ jobs:
 
     steps:
        - name: Run ls command to verify current working directory
-         working-directory: ./server/services/user-service
+         working-directory: server/services/user-service
          run: | 
             pwd
             ls
