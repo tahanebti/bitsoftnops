@@ -8,7 +8,10 @@ on:
 
 jobs:
   build_and_test:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server        
     
     steps:
     - uses: actions/checkout@v2
@@ -25,8 +28,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2      
 
     - name: Build and test project with Maven
-    - run: mv -f server/* .
-    - run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml
 
     
   publish-job:
@@ -37,7 +39,6 @@ jobs:
         - uses: actions/setup-java@v1
           with:
             java-version: 1.8
-        - run: mv -f server/* .    
         - run: mvn -B package --file pom.xml -DskipTests
         - run: mkdir staging && cp services/user-service/target/user-service-1.0.0.jar staging
         - uses: actions/upload-artifact@v1
@@ -51,9 +52,7 @@ jobs:
     needs: [build_and_test]
 
     steps:
-       - name: Run ls command to verify current working directory
-       - run: mv -f server/* .
-       
+ 
        - name: Build & push Docker image
          uses: mr-smithers-excellent/docker-build-push@v5
          with:
