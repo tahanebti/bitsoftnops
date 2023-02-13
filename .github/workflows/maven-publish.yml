@@ -60,8 +60,13 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Build Container image
-        run: docker build -t tahanebti/bitsoftnops-user-service:latest .
-        context: server/services/user-service
+        with:
+          context: server/services/user-service
+          push: true
+          tags: docker.io/${{ secrets.DOCKER_USERNAME }}/bitsoftnops-user-service:latest
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
         
       - name: Publish Docker image
         run: docker push tahanebti/bitsoftnops-user-service
