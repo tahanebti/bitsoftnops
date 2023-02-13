@@ -58,6 +58,6 @@ jobs:
           image: tahanebti/bitsoftnops-user-service
           tags: latest
           registry: docker.io
-          dockerfile: ./services/user-service/Dockerfile
+          dockerfile: server/services/user-service/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
