@@ -2,7 +2,6 @@
 FROM openjdk:8-jdk-alpine AS build
 RUN mkdir -p /workspace
 WORKDIR /workspace
-RUN chmod +x ./mvnw
 COPY pom.xml /workspace
 COPY src /workspace/src
 RUN ./mvnw -B package --file pom.xml -DskipTests
