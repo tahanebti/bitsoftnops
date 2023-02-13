@@ -14,13 +14,11 @@ jobs:
  #Build's job
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-          working-directory: ./server/services/user-service
+          
     steps:
       #Check-out your repository under $GITHUB_WORKSPACE, so your workflow can access it
       - uses: actions/checkout@v1
-      #- run: mv -f server/* . 
+      - run: mv -f server/* . 
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -33,9 +31,10 @@ jobs:
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
+          directory: /servicers/user-service
           image: tahanebti/bitsoftnops-user-service
           tags: latest
           registry: docker.io
-          dockerfile: services/user-service/Dockerfile
+          dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
