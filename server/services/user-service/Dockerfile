@@ -1,5 +1,8 @@
 #Maven Build
 FROM maven:3.8.3-openjdk-8-slim AS builder
+
+RUN mkdir -p /app
+WORKDIR /app
 COPY pom.xml /app/
 COPY src /app/src
 #RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests
