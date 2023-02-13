@@ -4,7 +4,7 @@ RUN mkdir -p /workspace
 WORKDIR /workspace
 COPY pom.xml /workspace
 COPY src /workspace/src
-RUN ./mvnw -B package --file pom.xml -DskipTests
+#RUN ./mvnw -B package --file pom.xml -DskipTests
 
 FROM openjdk:8-jre-slim
 #COPY target/user-service-1.0.0.jar /app/user-service-1.0.0.jar
